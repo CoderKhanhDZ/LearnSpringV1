@@ -2,6 +2,7 @@ package com.learnspring.java11.LearnSpringV1.model;
 
 
 import javax.persistence.*;
+import java.util.Objects;
 
 @Entity
 @Table(name="tbProduct")
@@ -24,10 +25,12 @@ public class Product {
     private String name;
     @Column(length = 300)
     private String description;
+    private String url;
 
-    public Product( String name, String description) {
+    public Product(String name, String description, String url) {
         this.name = name;
         this.description = description;
+        this.url = url;
     }
 
     public Product() {
@@ -58,12 +61,37 @@ public class Product {
         this.description = description;
     }
 
+    public String getUrl() {
+        return url;
+    }
+
+    public void setUrl(String url) {
+        this.url = url;
+    }
+
     @Override
     public String toString() {
         return "Product{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
                 ", description='" + description + '\'' +
+                ", url='" + url + '\'' +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Product product = (Product) o;
+        return id == product.id
+                && Objects.equals(name, product.name)
+                && Objects.equals(description, product.description)
+                && Objects.equals(url, product.url);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, name, description, url);
     }
 }
