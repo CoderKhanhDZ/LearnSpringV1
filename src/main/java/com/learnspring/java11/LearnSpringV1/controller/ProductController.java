@@ -84,6 +84,7 @@ public class ProductController {
             foundProduct.map(product -> {
                 product.setName(newProduct.getName());
                 product.setDescription(newProduct.getDescription());
+                product.setUrl(newProduct.getUrl());
                 return productRepository.save(product);
             });
             return ResponseEntity.status(HttpStatus.OK)

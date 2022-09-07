@@ -16,8 +16,8 @@ public class DatabaseBean {
     @Bean
     CommandLineRunner initDataBase(ProductRepository productRepository){
         return CommandLindRunner -> {
-            Product productA = new Product("iphone","this is iphone");
-            Product productB = new Product("ipad", "this is ipad");
+            Product productA = new Product("iphone", "this is iphone", "");
+            Product productB = new Product("ipad", "this is ipad", "");
 
             logger.info("insert data: " + productRepository.save(productA));
             logger.info("insert data: " + productRepository.save(productB));
